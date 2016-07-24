@@ -1,0 +1,3 @@
+#!/bin/sh
+# Print statistics about dataset.
+perl -ne 'while(/relation=\"(.+?)\"/g){print "$1\n";}' | sort | uniq -c  | sort -nrk 1 | perl -e 'while(<STDIN>){print; chomp; @fs = split; $total += $fs[0];} print "\n   $total total\n";'

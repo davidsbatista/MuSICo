@@ -1,0 +1,8 @@
+TI - <p1  pair=1 >  <prot>  TRADD </prot>  </p1>  - <p2  pair=1 >  <prot>  TRAF2 </prot>  </p2>  and <p1  pair=2 >  <prot>  TRADD </prot>  </p1>  - <p2  pair=2 >  <prot>  FADD </prot>  </p2>  interactions define two distinct <prot>  TNF receptor 1 </prot>  signal transduction pathways .
+PG - 299 - 308 AB - Tumor necrosis factor ( TNF ) can induce apoptosis and activate <prot>  NF - kappa B </prot>  through signaling cascades emanating from <prot>  TNF receptor 1 </prot>  ( <prot>  TNFR1 </prot>  ) .
+ <prot> TRADD </prot>  is a <prot>  TNFR1 </prot>  - associated signal transducer that is involved in activating both pathways .
+Here we show that <p1  pair=3 >  <p1  pair=4 >  <prot>  TRADD </prot>  </p1>  </p1>  directly interacts with <p1  pair=5 >  <p2  pair=3 >  <prot>  TRAF2 </prot>  </p2>  </p1>  and <p1  pair=6 >  <p2  pair=4 >  <prot>  FADD </prot>  </p2>  </p1>  , signal transducers that activate <p2  pair=5 >  <p2  pair=6 >  <prot>  NF - kappa B </prot>  </p2>  </p2>  and induce apoptosis , respectively .
+A <prot>  TRAF2 </prot>  mutant lacking its N - terminal RING finger domain is a dominant - negative inhibitor of TNF - mediated <prot>  NF - kappa B </prot>  activation , but does not affect TNF - induced apoptosis .
+Conversely , a <prot>  FADD </prot>  mutant lacking its N - terminal 79 amino acids is a dominant - negative inhibitor of TNF - induced apoptosis , but does not inhibit <prot>  NF - kappa B </prot>  activation .
+Thus , these two <prot>  TNFR1 </prot>  - <prot>  TRADD </prot>  signaling cascades appear to bifurcate at <prot>  TRADD </prot>  .
+AD - Tularik , Incorporated , South San Francisco , California 94080 , USA .

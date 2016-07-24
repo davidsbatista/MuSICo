@@ -1,0 +1,3 @@
+6734	"The software company <e1>Netscape</e1> was bought by <e2>AOL</e2>."
+Message-Topic(e1,e2)
+

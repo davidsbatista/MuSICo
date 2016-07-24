@@ -1,0 +1,12 @@
+TI - Genetic characterization of a mammalian protein - protein interaction domain by using a yeast reverse two - hybrid system .
+PG - 10321 - 6 AB - Many biological processes rely upon protein - protein interactions .
+Hence , detailed analysis of these interactions is critical for their understanding .
+Due to the complexities involved , genetic approaches are often needed .
+In yeast and phage , genetic characterizations of protein complexes are possible .
+However , in multicellular organisms , such characterizations are limited by the lack of powerful selection systems .
+Herein we describe genetic selections that allow single amino acid changes that disrupt protein - protein interactions to be selected from large libraries of randomly generated mutant alleles .
+The strategy , based on a yeast reverse two - hybrid system , involves a first - step negative selection for mutations that affect interaction , followed by a second - step positive selection for a subset of these mutations that maintain expression of full - length protein ( two - step selection ) .
+We have selected such mutations in the transcription factor <p1  pair=1 >  <prot>  E2F1 </prot>  </p1>  that affect its ability to heterodimerize with <p2  pair=1 >  <prot>  DP1 </prot>  </p2>  .
+The mutations obtained identified a putative helix in the marked box , a region conserved among E2F family members , as an important determinant for interaction .
+This two - step selection procedure can be used to characterize any interaction domain that can be tested in the two - hybrid system .
+AD - Massachusetts General Hospital Cancer Center , Charlestown 02129 , USA .

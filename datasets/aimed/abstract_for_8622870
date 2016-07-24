@@ -1,0 +1,9 @@
+TI - Use of the two hybrid system to detect the association of the protein - tyrosine - phosphatase , <p1  pair=1 >  <prot>  SHPTP2 </prot>  </p1>  , with another SH2 - containing protein , <p2  pair=1 >  <prot>  Grb7 </prot>  </p2>  .
+PG - 1537 - 44 AB - <prot>  SHPTP2 </prot>  is a ubiquitously - expressed SH2 - containing tyrosine phosphatase that is tyrosine phosphorylated in response to activation of various receptor and nonreceptor tyrosine kinases .
+ <p1  pair=2 >  <prot> SHPTP2 </prot>  </p1>  associates with the <p2  pair=2 >  <prot>  <prot>  platelet - derived growth factor </prot>  ( <prot>  PDGF </prot>  ) receptor </prot>  </p2>  after ligand stimulation , and binding of <prot>  SHPTP2 </prot>  to this receptor promotes tyrosine phosphorylation of <prot>  SHPTP2 </prot>  .
+The yeast two - hybrid system was modified to identify partners of tyrosine - phosphorylated proteins .
+Using <prot>  SHPTP2 </prot>  as bait and supplying an exogenous tyrosine kinase gene to the yeast cells , we have found that <p1  pair=3 >  <prot>  SHPTP2 </prot>  </p1>  interacts with another signaling protein , <p2  pair=3 >  <prot>  Grb7 </prot>  </p2>  .
+We have localized the region of interaction to tyrosine 580 in the carboxyl end of <prot>  SHPTP2 </prot>  and to the SH2 domain in the carboxy - terminus of <prot>  Grb7 </prot>  .
+We demonstrate that <p1  pair=4 >  <prot>  Grb7 </prot>  </p1>  binds to <p2  pair=4 >  <prot>  SHPTP2 </prot>  </p2>  in vitro under conditions where the latter is tyrosine - phosphorylated .
+These experiments show that this modified two hybrid technique may be useful for the identification of proteins involved in tyrosine kinase signal transduction cascades .
+AD - Fred Hutchinson Cancer Research Center , Seattle , Washington 98104 , USA .

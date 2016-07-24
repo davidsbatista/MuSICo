@@ -1,0 +1,9 @@
+TI - Nuclear protein <p1  pair=1 >  <prot>  CBP </prot>  </p1>  is a coactivator for the transcription factor <p2  pair=1 >  <prot>  CREB </prot>  </p2>  .
+PG - 223 - 6 AB - The transcription factor <prot>  CREB </prot>  binds to a DNA element known as the cAMP - regulated enhancer ( CRE ) .
+ <p1  pair=2 >  <p1  pair=3 >  <prot> CREB </prot>  </p1>  </p1>  is activated through phosphorylation by <p2  pair=2 >  <prot>  protein kinase A </prot>  </p2>  ( <p2  pair=3 >  <prot>  PKA </prot>  </p2>  ) , but precisely how phosphorylation stimulates <prot>  CREB </prot>  function is unknown .
+One model is that phosphorylation may allow the recruitment of coactivators which then interact with basal transcription factors .
+We have previously identified a nuclear protein of M ( r ) 265K , <p1  pair=4 >  <prot>  CBP </prot>  </p1>  , that binds specifically to the <p1  pair=5 >  <prot>  PKA </prot>  </p1>  - phosphorylated form of <p2  pair=4 >  <p2  pair=5 >  <prot>  CREB </prot>  </p2>  </p2>  .
+We have used fluorescence anisotropy measurements to define the equilibrium binding parameters of the <p1  pair=6 >  <prot>  phosphoCREB </prot>  </p1>  : <p2  pair=6 >  <prot>  CBP </prot>  </p2>  interaction and report here that <prot>  CBP </prot>  can activate transcription through a region in its carboxy terminus .
+The activation domain of <p1  pair=7 >  <prot>  CBP </prot>  </p1>  interacts with the basal transcription factor <prot>  TFIIB </prot>  through a domain that is conserved in the yeast coactivator <p2  pair=7 >  <prot>  ADA - 1 </prot>  </p2>  ( ref. 8 ) .
+Consistent with its role as a coactivator , <p1  pair=8 >  <prot>  CBP </prot>  </p1>  augments the activity of phosphorylated <p2  pair=8 >  <prot>  CREB </prot>  </p2>  to activate transcription of cAMP - responsive genes .
+AD - Vollum Institute , Oregon Health Sciences University , Portland 97201 .

@@ -18,7 +18,7 @@ public class Main {
 	
 		if (args.length < 5) {
 		  System.out.println("usage is: dataset true|false signature bands knn [train_file] [test file]");
-		  System.out.println("dataset: semeval wiki aimed drugbank wikipt publico");
+		  System.out.println("dataset: semeval wiki aimed drugbank wikipt");
 		  System.out.println("generate examples: 	true|false");
 		  System.out.println("signature:  			number of hash signatures");
 		  System.out.println("bands:  				number of hash bands");
@@ -60,11 +60,6 @@ public class Main {
 				  GenerateSetsEN.generateDataWikiEn();
 				  TestClassification.testWikiEN();
 			  }
-			  
-			  if (args[0].equals("publico")) {
-				  GenerateSetsPT.generatePublico();
-				  TestClassification.classifyPublico();
-			  }			  
 			  
 			  if ((args[0].equals("drugbank")) && args[1].equalsIgnoreCase("false")) TestClassification.testDrugBank();
 			  else if (args[0].equals("drugbank") && (args[1].equals("true"))) {

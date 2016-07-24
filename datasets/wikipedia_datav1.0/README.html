@@ -1,0 +1,358 @@
+<html>
+<h2>Wikipedia Relation Extraction Data v1.0</h2>
+
+10/6/06 The data is available here: <a href="http://www.cs.umass.edu/~culotta/data/wikipedia_datav1.0.tgz">wikipedia_datav1.0.tgz</a>
+
+<p> This data contains <a href="http://www.wikipedia.org">Wikipedia</a> pages for which links between pages have been annotated with a relation type, e.g. father, education, superior, etc. This data was created in collaboration between the University of Massachusetts and Google, Inc.
+
+<p> For more details, contact Aron Culotta (culotta at cs dot umass dot edu).
+
+<p> A paper using this dataset is
+<br>
+@inproceedings{culotta06integrating,<br>
+  author = {Aron Culotta and Andrew McCallum and Jonathan Betz},<br>
+  title = {Integrating probabilistic extraction models and data mining to discover relations and patterns in text},<br>
+  booktitle = {HLT-NAACL},<br>
+  year = {2006},<br>
+  pages = {296--303},<br>
+  address = {New York, NY},<br>
+  month = {June},<br>
+  url = {<a href="http://www.cs.umass.edu/~culotta/pubs/culotta06integrating.pdf">http://www.cs.umass.edu/~culotta/pubs/culotta06integrating.pdf</a>},<br>
+  
+}<br>
+
+
+<p> Here are some statistics about the dataset:
+<li> <b> 441 </b> Wikipedia pages 
+<li> <b> 1110 </b> paragraphs
+<li> <b> 4681 </b> relation mentions
+<li> <b> 53 </b> relation types
+
+<br><br> The frequency of each relations is:
+<br>
+<br>    379 job_title
+<br>    368 visited
+<br>    340 birth_place
+<br>    326 associate
+<br>    287 birth_year
+<br>    283 member_of
+<br>    283 birth_day
+<br>    267 opus
+<br>    210 death_year
+<br>    199 death_day
+<br>    185 education
+<br>    148 nationality
+<br>    127 executive
+<br>    111 employer
+<br>     93 death_place
+<br>     86 award
+<br>     84 father
+<br>     81 participant
+<br>     71 brother
+<br>     68 son
+<br>     58 associate_competition
+<br>     57 wife
+<br>     54 superior
+<br>     50 mother
+<br>     44 political_affiliation
+<br>     43 friend
+<br>     43 founder
+<br>     35 daughter
+<br>     33 husband
+<br>     32 religion
+<br>     31 influence
+<br>     27 underling
+<br>     20 sister
+<br>     20 grandfather
+<br>     19 ancestor
+<br>     18 grandson
+<br>     15 inventor
+<br>     13 cousin
+<br>     11 descendant
+<br>     10 role
+<br>      9 nephew
+<br>      6 uncle
+<br>      6 supported_person
+<br>      6 granddaughter
+<br>      4 owns
+<br>      4 great_grandson
+<br>      4 aunt
+<br>      3 supported_idea
+<br>      3 great_grandfather
+<br>      3 gpe_competition
+<br>      2 brother_in_law
+<br>      1 grandmother
+<br>      1 discovered
+<br>
+<br> The number of relations labeled per person is:<br>
+<br>41	Abraham_Lincoln
+<br>14	Abraham_Simpson
+<br>18	Adelina_Patti
+<br>7	Adolf_Otto_Reinhold_Windaus
+<br>33	Albert_Einstein
+<br>19	Aldous_Huxley
+<br>35	Alec_Baldwin
+<br>9	Alexander_Gretchaninoff
+<br>10	Allen_Ginsberg
+<br>16	Andrew_Huxley
+<br>23	Anne_Hutchinson
+<br>17	Anne_Ramsey
+<br>5	Anton_Niklas_Sundberg
+<br>15	Anton_Seidl
+<br>12	Archie_Manning
+<br>27	Arnold_Schwarzenegger
+<br>16	August_Schleicher
+<br>4	Austin_Norman_Palmer
+<br>5	Bart_Simpson
+<br>6	Baruch_Spinoza
+<br>46	Benjamin_Franklin
+<br>16	B._Everett_Jordan
+<br>14	Beverley_Nichols
+<br>40	Bill_Clinton
+<br>10	Billy_Andrade
+<br>17	Billy_Boucher
+<br>33	Bob_Clampett
+<br>7	Bob_Dee
+<br>36	Bob_Dole
+<br>15	Brice_Lalonde
+<br>8	Brooks_Adams
+<br>14	Calvin_Coolidge
+<br>27	Carmine_Coppola
+<br>28	Carrie_Fisher
+<br>20	Caspar_Weinberger
+<br>9	Catherine_of_Braganza
+<br>72	Charles_Darwin
+<br>10	Charles_Francis_Adams,_Jr.
+<br>18	Charles_Galton_Darwin
+<br>17	Charles_M._Schulz
+<br>16	Christel_Haeck
+<br>13	Christian_VII_of_Denmark
+<br>34	C.J._Klaas
+<br>8	Clara_Blandick
+<br>10	Clarence_Gaines
+<br>7	Clare_of_Assisi
+<br>10	Claude-Louis_Navier
+<br>11	Clive_Davis
+<br>18	Connop_Thirlwall
+<br>14	Culbert_Olson
+<br>19	Darrell_S._Cole
+<br>21	David_Manners
+<br>20	David_Margesson,_1st_Viscount_Margesson
+<br>14	David_Shire
+<br>32	Debbie_Reynolds
+<br>11	Delino_DeShields
+<br>25	Diane_Abbott
+<br>53	Dick_Cheney
+<br>15	Didier_Julia
+<br>20	Dizzy_Gillespie
+<br>22	Donald_Rumsfeld
+<br>16	Dorothy_Bush_Koch
+<br>5	Dorothy_Dunnett
+<br>13	Douglas_McKay
+<br>19	Drew_Barrymore
+<br>7	Dugald_Stewart
+<br>11	Eagle-Eye_Cherry
+<br>31	Edric_Gifford,_3rd_Baron_Gifford
+<br>20	Edward_Bulwer-Lytton,_1st_Baron_Lytton
+<br>26	Eleanor_Roosevelt
+<br>8	Eli_Manning
+<br>14	Elizabeth_Rogers
+<br>21	Elizabeth_Taylor
+<br>18	Elliott_Roosevelt
+<br>18	Elvis_Presley
+<br>22	Erasmus_Darwin
+<br>22	Erich_Honecker
+<br>6	Erin_Fleming
+<br>9	Eunice_Kennedy_Shriver
+<br>13	Fernando_Luis_Garcia
+<br>38	Francis_Ford_Coppola
+<br>23	Francis_Galton
+<br>33	Frank_Carlucci
+<br>11	Frank_D._White
+<br>10	Frank_Howard_(football_coach)
+<br>24	Franklin_D._Roosevelt
+<br>32	Franklin_Schaffner
+<br>21	Friedrich_Bessel
+<br>20	Gail_Davis
+<br>15	Garrett_Birkhoff
+<br>33	George_Clooney
+<br>12	George_Darwin
+<br>10	George_David_Birkhoff
+<br>31	George_Dewey
+<br>24	George_H._W._Bush
+<br>27	Georges_Pompidou
+<br>79	George_W._Bush
+<br>9	Glanmor_Williams
+<br>9	Godfrey_Rampling
+<br>21	Grace_Coolidge
+<br>3	Graham_Stuart_(footballer)
+<br>13	Groucho_Marx
+<br>22	Guy_Banister
+<br>18	Hans_Geiger
+<br>8	Harvey_Doolittle_Colvin
+<br>11	Hasso_von_Manteuffel
+<br>15	Helen_Traubel
+<br>15	Helge_von_Koch
+<br>15	Henry_Adams
+<br>17	Henry_Bolte
+<br>23	Henry_Ford
+<br>38	Hillary_Clinton
+<br>7	Homer_Simpson
+<br>22	Ion_Antonescu
+<br>15	Jack_Kerouac
+<br>18	James_Bowdoin
+<br>23	James_Busby
+<br>16	James_Grant_Forbes
+<br>13	James_Smith_Bush
+<br>29	James_Tully
+<br>14	James_Wright_(poet)
+<br>17	Janet_Flanner
+<br>20	Jason_Schwartzmann
+<br>14	J._Carrol_Naish
+<br>12	Jean_Tardieu
+<br>33	Jeb_Bush
+<br>12	Jim_Garrison
+<br>13	Joely_Fisher
+<br>26	Johann_Franz_Encke
+<br>9	Johann_Joachim_Quantz
+<br>5	John_Adams_(mutineer)
+<br>12	John_Austin_(politician)
+<br>22	John_Barrymore
+<br>10	John_Busby
+<br>17	John_Coltrane
+<br>16	John_Cornford
+<br>17	John_Drew_Barrymore
+<br>30	John_D._Rockefeller
+<br>20	John_F._Fitzgerald
+<br>33	John_F._Kennedy
+<br>16	John_F._Kennedy,_Jr.
+<br>6	John_Kerry
+<br>8	John_Maxton,_Baron_Maxton
+<br>10	Johnny_Mokan
+<br>36	John_Quincy_Adams
+<br>7	John_W._Duarte
+<br>13	John_Wells_(satirist)
+<br>16	John_Winthrop,_the_Younger
+<br>23	John_W._Snow
+<br>14	Jonathan_Aitken
+<br>35	Jon_Barry
+<br>8	Jorge_Amado
+<br>29	José_Ferrer
+<br>12	Joseph_F._Johnston
+<br>12	Joseph_H._Ball
+<br>14	Joseph_P._Kennedy,_Jr.
+<br>20	Joseph_P._Kennedy,_Sr.
+<br>7	Josiah_Wedgewood
+<br>30	Juan_Bautista_Alberdi
+<br>13	Julian_Huxley
+<br>11	Julius_Lothar_Meyer
+<br>23	Katharine_Hepburn
+<br>8	Kathleen_Agnes_Kennedy
+<br>7	Kaysone_Phomvihane
+<br>17	Kim_Basinger
+<br>6	Kim_Jong-chul_(political_figure)
+<br>19	Kristen_Pfaff
+<br>9	Krist_Novoselic
+<br>47	Kurt_Cobain
+<br>14	Laurance_Rockefeller
+<br>13	LaWanda_Page
+<br>13	Lee_De_Forest
+<br>19	Leonardo_da_Vinci
+<br>27	Lewis_Libby
+<br>13	Lilia_Skala
+<br>21	Lisa_Marie_Presley
+<br>3	Lisa_Simpson
+<br>18	Luis_Tiant
+<br>24	Lyman_Enos_Knapp
+<br>3	Maggie_Simpson
+<br>22	Margaret_Tyndal_Winthrop
+<br>10	Marge_Simpson
+<br>16	Maria_Shriver
+<br>24	Martin_Luther_King,_Jr.
+<br>17	Martin_Luther_King,_Sr.
+<br>11	Marvin_Bush
+<br>11	Mary_Ford
+<br>13	Mary_Lilian_Baels
+<br>9	Matthew_Parker
+<br>11	Michael_Hughes_(footballer)
+<br>4	Michael_McManus_(columnist)
+<br>9	Michel_Goulet
+<br>30	Miguel_Ferrer
+<br>11	Mildred_Bailey
+<br>22	Neil_Bush
+<br>31	Nelson_Rockefeller
+<br>16	Newton_Cannon
+<br>13	Nicholas_Gilman
+<br>25	Nick_Clooney
+<br>20	Nicolas_Cage
+<br>11	Obadiah_Newcomb_Bush
+<br>17	Patricia_Arquette
+<br>5	Patricia_Kennedy_Lawford
+<br>10	Patrick_J._Kennedy
+<br>11	Paul_Simon
+<br>16	Penelope_Aitken
+<br>9	Pete_Carroll
+<br>14	Peter_Lawford
+<br>12	Peyton_Manning
+<br>65	Prescott_Bush
+<br>8	Prince_Eitel_Friederich_of_Prussia
+<br>24	Prince_Lennart,_Duke_of_Smalandia
+<br>20	Prince_Paul_of_Yugoslavia
+<br>5	Raymond_Arrieta
+<br>14	Ray_Stannard_Baker
+<br>14	Recep_Tayyip_Erdogan
+<br>4	richard_Bush
+<br>16	Richard_Butler_(general)
+<br>7	Richard_Keynes
+<br>16	Richard_Nixon
+<br>21	Rick_Barry
+<br>10	Ricky_Byrdsong
+<br>15	Robert_Brown_(actor)
+<br>22	Robert_Charles_Winthrop
+<br>18	Robert_Koldewey
+<br>40	Robert_McNamara
+<br>22	Romeyn_B._Ayres
+<br>42	Ronald_Reagan
+<br>11	Rose_Fitzgerald
+<br>28	Rosemary_Clooney
+<br>7	Rosemary_Kennedy
+<br>17	Roy_Geiger
+<br>6	Ruth_Lawrence
+<br>4	Ryan_Pore
+<br>14	Samuel_Adams_(governor)
+<br>8	Sarah_Vandenbergh
+<br>7	Sara_Roosevelt
+<br>10	Sidney_Darlington
+<br>25	Sofia_Coppola
+<br>5	Spike_Jones
+<br>7	Stella_Gibbons
+<br>13	Stephen_Baldwin
+<br>14	Stephen_Harriman_Long
+<br>11	Stephen_Luce
+<br>6	Stevo_Crvenkovski
+<br>18	Talia_Shire
+<br>7	Ted_Kennedy
+<br>32	Theodore_Roosevelt
+<br>8	Thomas_Bracken
+<br>15	Thomas_Henry_Huxley
+<br>15	Timothy_Bush
+<br>41	Tom_Hanks
+<br>31	Ulysses_S._Grant
+<br>26	Uta_Hagen
+<br>12	Vasil_Kolarov
+<br>4	Vincent_Cianci,_Jr
+<br>10	Walter_Ulbricht
+<br>15	Webster_Young
+<br>16	Wilhelm_II_of_Germany
+<br>9	Wilhelmine_of_Bayreuth
+<br>11	William_Baldwin
+<br>20	William_Clark_Falkner
+<br>19	William_Hindman
+<br>16	William_Rockefeller
+<br>28	William_S._Burroughs
+<br>14	William_Seward_Burroughs
+<br>10	William_Wrigley_Jr.
+<br>18	Willie_Stargell
+<br>5	W._W._Rouse_Ball
+
+</html>
