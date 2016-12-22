@@ -3,7 +3,7 @@ Minwise Hashing for Relationship Extraction from Text
 
 The MinHash-based Semantic Relationship Classifier (MuSICo) is an  on-line approach for extracting of semantic relationships, based on the idea of nearest neighbor classification.  
 
-Instead of learning a statistical model, it finds the most similar relationship instances in a database and uses these similarities to make the decision of whether the sentence holds a certain relationship type. The relationship expressed in the sentence is classified according to the relationship type of the most similar relationship instances in a database.
+Instead of learning a statistical model, it finds the most similar relationship instances in a database and uses these similarities to make the decision of whether the sentence holds a certain relationship type. The sentence is classified according to the relationship type of the most similar relationship instances in a database.
 
 The computation is done by leveraging min-hash and locality sensitive hashing for efficiently measuring the similarity between instances.
 
