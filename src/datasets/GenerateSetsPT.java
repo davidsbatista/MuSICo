@@ -35,7 +35,6 @@ import com.aliasi.tokenizer.TokenizerFactory;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 
-import datasets.Publico.Article;
 import datasets.WikiPT.Instance;
 import datasets.WikiPT.Relations;
 
@@ -54,81 +53,7 @@ public class GenerateSetsPT {
 		System.out.println("Generating WikiPT data...");
 		processWikiPT("Datasets/WikiPT/results-relation-extraction.txt",outTrain,outTest);		
 	}
-	
-	public static void generatePublico() throws InvalidFormatException, FileNotFoundException, IOException {		
-		//PortugueseVerbNormalizer.initialize();
-		PortuguesePOSTagger.initialize();				
-		System.out.println("Extracting sentences from publico");
-		LinkedList<Article> articles = datasets.Publico.ReadXML.parse("/home/dsbatista/relations-minhash/publico.pt/publico-10-years-all.xml");
-		Writer sentences = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("publico-sentences.txt"), "UTF8"));
-		//Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("publico-relations.txt"), "UTF8"));
-		final TokenizerFactory TOKENIZER_FACTORY = IndoEuropeanTokenizerFactory.INSTANCE;
-		final SentenceModel SENTENCE_MODEL = new IndoEuropeanSentenceModel();
-		int id = 0;
-		Iterator<Article> iterator = articles.iterator();
-		while (iterator.hasNext()) {
-			Article a = iterator.next();
-			String date = a.date;
-			String text = a.getText();					
-			//String text = a.title;			
-			//String text = a.lead; 			
-			text = text.replaceAll(" BE "," <ORGANIZACAO>BE</ORGANIZACAO> ");
-			text = text.replaceAll(" BPN "," <ORGANIZACAO>BPN</ORGANIZACAO> ");
-			text = text.replaceAll(" SLN "," <ORGANIZACAO>SLN</ORGANIZACAO> ");
-			text = text.replaceAll(" PS "," <ORGANIZACAO>PS</ORGANIZACAO> ");
-			text = text.replaceAll(" PSP "," <ORGANIZACAO>PSP</ORGANIZACAO> ");
-			text = text.replaceAll(" PSD "," <ORGANIZACAO>PSD</ORGANIZACAO> ");
-			text = text.replaceAll(" CDS/PP "," <ORGANIZACAO>CDS/PP</ORGANIZACAO> ");			
-			text = text.replaceAll("&quot;","\"");			
-			List<String> tokenList = new ArrayList<String>();
-			List<String> whiteList = new ArrayList<String>();
-			Tokenizer tokenizer = TOKENIZER_FACTORY.tokenizer(text.toCharArray(),0,text.length());
-			tokenizer.tokenize(tokenList,whiteList);			
-			String[] tokens = new String[tokenList.size()];
-			String[] whites = new String[whiteList.size()];
-			tokenList.toArray(tokens);
-			whiteList.toArray(whites);
-			int[] sentenceBoundaries = SENTENCE_MODEL.boundaryIndices(tokens,whites);			
-			int sentStartTok = 0;
-			int sentEndTok = 0;
-				
-			for (int i = 0; i < sentenceBoundaries.length; ++i) {
-				//System.out.println("SENTENCE "+(i+1)+": ");
-			    sentEndTok = sentenceBoundaries[i];			    
-			    StringBuffer sentence =  new StringBuffer();
-			    for (int j=sentStartTok; j <= sentEndTok; j++) {
-			        sentence.append(tokens[j]+whites[j+1]);
-			    }			    
-			    sentStartTok = sentEndTok+1;
-			    Pattern pattern = Pattern.compile("<[^>]*>[^<]+</[^>]+>");
-				Matcher matcher = pattern.matcher(sentence);
-				sentences.write(date + "\t" + sentence + "\n");
-			    while (matcher.find()) {
-			    	String type1 = matcher.group();
-			    	String after1 = sentence.substring(matcher.end());
-			    	Matcher matcher2 = pattern.matcher(after1);
-				    while (matcher2.find()) {
-				    	String type2 = matcher2.group();
-						String before = sentence.substring(0,matcher.end()).replaceAll("<[^>]+>","");
-						String after = sentence.substring(matcher.end()+matcher2.start()).replaceAll("<[^>]+>","");
-						String between = sentence.substring(matcher.end(),matcher.end()+matcher2.start()).replaceAll("<[^>]+>","");
-						after = between + " " + after;		                   
-						before = before + " " + between;
-		                before = before.replaceAll(" +", " ").trim();
-		                after = after.replaceAll(" +", " ").trim();
-		                between = between.replaceAll(" +", " ").trim();		                
-		                type1 = type1.replaceAll(" ","_");
-		                type2 = type2.replaceAll(" ","_");
-						//processExample(before,after,between,date+"_"+String.valueOf(id)+"_"+type1+"-"+type2,out);
-				  	}
-				 }  
-			    id++;
-			}
-		}
-		//out.close();
-		sentences.close();
-	}
-				
+
 	public static int countWords(String entity, String sentence) {
 		int count = 0;
 		int result = sentence.indexOf(entity);

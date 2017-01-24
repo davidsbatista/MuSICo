@@ -1,30 +1,45 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project relations-minhash with Jar-in-Jar Loader">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
-        <jar destfile="/home/dsbatista/relations-minhash.jar">
+<?xml version="1.0"?>
+<project name="Ant-Test" default="main" basedir=".">
+    <!-- Sets variables which can later be used. -->
+    <!-- The value of a property is accessed via ${} -->
+    <property name="src.dir" location="src" />
+    <property name="build.dir" location="build" />
+    <property name="dist.dir" location="dist" />
+
+    <path id="lib.path">
+        <fileset dir="." includes="libs/*.jar"/>
+    </path>
+
+    <!-- Deletes the existing build, docs and dist directory-->
+    <target name="clean">
+        <delete dir="${build.dir}" />
+        <delete dir="${dist.dir}" />
+    </target>
+
+    <!-- Creates the  build, docs and dist directory-->
+    <target name="makedir">
+        <mkdir dir="${build.dir}" />
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+    <!-- Compiles the java code (including the usage of library for JUnit -->
+    <target name="compile" depends="clean, makedir">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path">
+        </javac>
+
+    </target>
+
+    <!--Creates the deployable jar file  -->
+    <target name="jar" depends="compile">
+        <jar destfile="${dist.dir}\MuSICo.jar" basedir="${build.dir}">
             <manifest>
-                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
-            	<attribute name="Rsrc-Main-Class" value="bin.Main"/>            	            	
-            	<!--            	
-            	<attribute name="Rsrc-Main-Class" value="datasets.TestClassificationNBTree"/>
-				-->            	
-                <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ lingpipe-4.1.0.jar PTStemmer_v2.jar opennlp-uima-1.5.2-incubating.jar opennlp-maxent-3.0.2-incubating.jar opennlp-tools-1.5.2-incubating.jar icu4j.jar mapdb-0.9.3.jar morphadorner.jar guava-14.0.1.jar"/>
+                <attribute name="Main-Class" value="bin.Main" />
             </manifest>
-            <zipfileset src="jar-in-jar-loader.zip"/>
-            <fileset dir="/home/dsbatista/workspace/relations-minhash/bin"/>
-            <zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="icu4j.jar"/>
-            <zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="mapdb-0.9.3.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="morphadorner.jar"/>        	
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="log4j-1.2-1.2.15.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="guava-14.0.1.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="opennlp-tools-1.5.2-incubating.jar"/>        	
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="opennlp-maxent-3.0.2-incubating.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="opennlp-uima-1.5.2-incubating.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="PTStemmer_v2.jar"/>
-        	<zipfileset dir="/home/dsbatista/workspace/relations-minhash/jars" includes="lingpipe-4.1.0.jar"/>
         </jar>
     </target>
+
+    <target name="main" depends="compile, jar">
+        <description>Main target</description>
+    </target>
+
 </project>
