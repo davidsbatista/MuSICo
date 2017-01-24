@@ -515,7 +515,7 @@ public class GenerateSetsEN {
 		 for ( int f = 1 ; f <= 10; f++) {
 			System.out.println("Generating AIMED data fold " + f );
 			accu_train += processAIMED("Datasets/aimed", "Datasets/aimed/splits/train-203-" + f, new PrintWriter(new FileWriter("train-data-aimed.txt." + f)));
-			accu_test += processAIMED("Datasets/aimed", "Datasets/aimed/splits/test-203-" + f, new PrintWriter(new FileWriter("test-data-aimed.txt." + f)));						
+			accu_test += processAIMED("Datasets/aimed", "Datasets/aimed/splits/test-203-" + f, new PrintWriter(new FileWriter("test-data-aimed.txt." + f)));
 		 }		 
 		 System.out.println("Avg. Generate train data time: " + TimeUnit.SECONDS.convert(accu_train, TimeUnit.NANOSECONDS) / (float) 10 );
 		 System.out.println("Avg. Generate test data time: " + TimeUnit.SECONDS.convert(accu_test, TimeUnit.NANOSECONDS) / (float) 10);
@@ -531,7 +531,7 @@ public class GenerateSetsEN {
 		 elapsedTimeTrain = processSemEval(train, new PrintWriter(new FileWriter("train-data-semeval.txt")));	 		 	 
 		 System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTrain, TimeUnit.NANOSECONDS));	 
 		 System.out.println("\nGenerating test data...");		 
-		 if (test == null) test = "Datasets/SemEval2010_task8_all_data/SemEval2010_task8_testing_keys/TEST_FILE_FULL.TXT"; 
+		 if (test == null) test = "Datasets/SemEval2010_task8_all_data/SemEval2010_task8_testing_keys/TEST_FILE_FULL.TXT";
 		 elapsedTimeTest = processSemEval(test, new PrintWriter(new FileWriter("test-data-semeval.txt")));
 		 System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTest, TimeUnit.NANOSECONDS));
 	}

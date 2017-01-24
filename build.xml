@@ -22,7 +22,7 @@
         <mkdir dir="${dist.dir}" />
     </target>
 
-    <!-- Compiles the java code (including the usage of library for JUnit -->
+    <!-- Compiles the java code  -->
     <target name="compile" depends="clean, makedir">
         <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path">
         </javac>
@@ -34,6 +34,7 @@
         <jar destfile="${dist.dir}\MuSICo.jar" basedir="${build.dir}">
             <manifest>
                 <attribute name="Main-Class" value="bin.Main" />
+
             </manifest>
         </jar>
     </target>
