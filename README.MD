@@ -11,9 +11,11 @@ The computation is done by leveraging min-hash and locality sensitive hashing fo
 Usage:
 =====
 
-First just `ant` to compile the source code, which should generate `MuSICo.jar`
+First just `ant` to compile the source code, which should generate `MuSICo.jar` based on `build.xml`
     
+    
     ant
+    
     
 All the external libs needed by MuSICo are in the `libs/` directory. Then you can call MuSICo.jar with the following parameters, e.g.:
 
