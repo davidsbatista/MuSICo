@@ -154,10 +154,10 @@ public class TestClassification {
 		System.out.println();
 		System.out.println("Test classification on SemEval...");
 		System.out.println("Reading train data SemEval...");
-		if (train_data==null) train_data="train-data-semeval.txt";
+		if (train_data==null) train_data="shingles/train-data-semeval.txt";
 		readTrainData(train_data);
 		System.out.println("Reading test data SemEval...");
-		if (test_data==null) test_data="test-data-semeval.txt";
+		if (test_data==null) test_data="shingles/test-data-semeval.txt";
 
 		LinkedList<Pair<String, String>> all_results = evaluateTestData(test_data);
 		double[] results = { 0.0, 0.0, 0.0, 0.0 };
@@ -208,7 +208,7 @@ public class TestClassification {
 		System.out.println();
 		System.out.println("Test classification on English Wikipedia...");
 		System.out.println("Reading train data WikiEN...");
-		readTrainData("train-data-wikien.txt");
+		readTrainData("shingles/train-data-wikien.txt");
 		System.out.println("Reading test data WikiEN...");
 		LinkedList<Pair<String, String>> aux = evaluateTestData("test-data-wikien.txt");
 		double[] resultsWiki = { 0.0, 0.0, 0.0, 0.0 };
@@ -254,7 +254,7 @@ public class TestClassification {
 			System.out.println();
 			System.out.println("Results for fold " + i + "...");
 			System.out.println("Reading train data ...");
-			readTrainData("train-data-aimed.txt." + i);
+			readTrainData("shingles/train-data-aimed.txt." + i);
 			System.out.println("Reading test data ...");
 			LinkedList<Pair<String, String>> aux = evaluateTestData("test-data-aimed.txt." + i);
 			double[] results_aux = evaluateResults(aux, "related");
