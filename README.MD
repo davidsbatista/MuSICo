@@ -8,12 +8,28 @@ Instead of learning a statistical model, it finds the most similar relationship 
 The computation is done by leveraging min-hash and locality sensitive hashing for efficiently measuring the similarity between instances.
 
 
-Usage
+Usage:
 =====
 
-ant
+First just `ant` to compile the source code, which should generate `MuSICo.jar` based on `build.xml`
+    
+    
+    ant
+    
+    
+All the external libs needed by MuSICo are in the `libs/` directory. Then you can call MuSICo.jar with the following parameters, e.g.:
 
-clear;java -cp libs/*:MuSICo.jar bin.Main semeval true 400 50 5
+    java -cp libs/*:MuSICo.jar bin.Main semeval true 400 50 5
+
+**parameters**
+
+    MuSICo.jar bin.Main dataset true|false #min-hash-sigs #bands #kNN [train_file] [test_file]
+    
+    dataset           semeval wiki aimed wikipt
+    true|false        generate shingles ? if false need to pass train_file/test_file
+    #min-hash-sigs    number of hash signatures
+    #bands            size of the LSH bands
+    #kNN              number of closest neighbors to consider
 
 
 References
