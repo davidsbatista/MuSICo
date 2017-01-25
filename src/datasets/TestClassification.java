@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-import minhash.LocalitySentitiveHashing;
+import minhash.LocalitySensitiveHashing;
 import utils.misc.Pair;
 
 public class TestClassification {
@@ -26,20 +26,20 @@ public class TestClassification {
 	private static int trainInstances = 0;
 	private static int testInstances = 0;
 
-	private static LocalitySentitiveHashing dataIndex;
-	private static LocalitySentitiveHashing directionIndex;
+	private static LocalitySensitiveHashing dataIndex;
+	private static LocalitySensitiveHashing directionIndex;
 	
 	public static void readTrainData(String file) throws Exception {
 		readTrainData(file, -1);
 	}
 
 	public static void readTrainData(String file, int number) throws Exception {
-		File dbfile = new File("mapdb-relations-index");
-		File dbfile2 = new File("mapdb-directions-index");
+		File dbfile = new File("MapDB/mapdb-relations-index");
+		File dbfile2 = new File("MapDB/mapdb-directions-index");
 		dbfile.deleteOnExit();
 		dbfile2.deleteOnExit();
-		dataIndex = new LocalitySentitiveHashing(dbfile, signature, bands);
-		directionIndex = new LocalitySentitiveHashing(dbfile2, signature, bands);
+		dataIndex = new LocalitySensitiveHashing(dbfile, signature, bands);
+		directionIndex = new LocalitySensitiveHashing(dbfile2, signature, bands);
 		LineNumberReader lnr = new LineNumberReader(new FileReader(new File(file)));
 		lnr.skip(Long.MAX_VALUE);
 		int num_lines = lnr.getLineNumber();
@@ -135,12 +135,12 @@ public class TestClassification {
 
 		System.out.println();
 		System.out.println("Results for class \t" + class_relation + "\t" + (dataIndex.indexSize(class_relation) + (int) numInstancesOfClass));
-		System.out.println("Number of training instances : " + dataIndex.indexSize(class_relation));
-		System.out.println("Number of test instances : " + numInstancesOfClass);
-		System.out.println("Number of classifications : " + numClassified);
-		System.out.println("Precision : " + precision);
-		System.out.println("Recall : " + recall);
-		System.out.println("F1 : " + f1);
+		System.out.println("Number of training instances: " + dataIndex.indexSize(class_relation));
+		System.out.println("Number of test instances: " + numInstancesOfClass);
+		System.out.println("Number of classifications: " + numClassified);
+		System.out.println("Precision: " + precision);
+		System.out.println("Recall: " + recall);
+		System.out.println("F1: " + f1);
 
 		trainInstances += dataIndex.indexSize(class_relation);
 		testInstances += numInstancesOfClass;
@@ -158,13 +158,6 @@ public class TestClassification {
 		readTrainData(train_data);
 		System.out.println("Reading test data SemEval...");
 		if (test_data==null) test_data="test-data-semeval.txt";
-		
-		/*
-		 * Map<String, Set<String>> patterns =
-		 * PMI.readScores("class_reverb_patterns_pmi.txt",5); for (String t :
-		 * patterns.keySet()) { System.out.println(t); for (String p :
-		 * patterns.get(t)) { System.out.println(p); } }
-		 */
 
 		LinkedList<Pair<String, String>> all_results = evaluateTestData(test_data);
 		double[] results = { 0.0, 0.0, 0.0, 0.0 };
@@ -278,50 +271,6 @@ public class TestClassification {
 		System.out.println("Precision : " + results[1]);
 		System.out.println("Recall : " + results[2]);
 		System.out.println("F1 : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
-	}
-
-	public static void testDrugBank() throws Exception {
-		System.out.println();
-		System.out.println("Test classification on DrugBank...");
-		System.out.println("Reading train data DrugBank...");
-		readTrainData("train-data-drugbank.txt");
-		System.out.println("Reading test data DrugBank...");
-		LinkedList<Pair<String, String>> all_results = evaluateTestData("test-data-drugbank.txt");
-		double[] results = { 0.0, 0.0, 0.0, 0.0 };
-
-		String[] classes = { "advise(e0,e1)", "effect(e0,e1)", "int(e0,e1)",
-				"mechanism(e0,e1)", "Other" };
-
-		for (String c : classes) {
-			System.out.println();
-			double[] results_aux = evaluateResults(all_results, c);
-			for (int j = 1; j < results_aux.length; j++)
-				results[j] = results[j] + results_aux[j];
-			results[0] = results_aux[0];
-		}
-		
-		for (int i = 1; i < results.length; i++) results[i] = results[i] / classes.length;
-		System.out.println();
-		System.out.println("Total train instances : " + trainInstances);
-		System.out.println("Total test instances : " + testInstances);
-		System.out.println("Macro-Average results for all classes...");
-		System.out.println("Accuracy : " + results[0]);
-		System.out.println("Precision : " + results[1]);
-		System.out.println("Recall : " + results[2]);
-		System.out.println("F1 : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
-	}
-
-	public static void classifyPublico() throws Exception {
-		System.out.println();
-		System.out.println("Reading train data WikiPT...");
-		readTrainData("train-data-wikipt.txt");
-		System.out.println("Classifying publico.pt relations");
-		LinkedList<Pair<String, String>> all_results = evaluateTestData("publico-relations.txt");
-		Writer results = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("publico-relations-classifications.txt"),"UTF8"));
-		for (Pair<String, String> pair : all_results) {
-			results.write(pair.getFirst() + '\t' + pair.getSecond() + '\n');
-		}
-		results.close();
 	}
 
 	public static void testWikiPT(String train, String test) throws Exception {

@@ -8,6 +8,13 @@ Instead of learning a statistical model, it finds the most similar relationship 
 The computation is done by leveraging min-hash and locality sensitive hashing for efficiently measuring the similarity between instances.
 
 
+Usage
+=====
+
+ant
+
+clear;java -cp libs/*:MuSICo.jar bin.Main semeval true 400 50 5
+
 
 References
 ==========

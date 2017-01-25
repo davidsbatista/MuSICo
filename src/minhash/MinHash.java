@@ -128,5 +128,4 @@ public class MinHash {
       return Math.abs((int) (hashValue % MAX_INT_SMALLER_TWIN_PRIME));
     }
   }
-
 }

@@ -18,7 +18,7 @@ public class Main {
 	
 		if (args.length < 5) {
 		  System.out.println("usage is: dataset true|false signature bands knn [train_file] [test file]");
-		  System.out.println("dataset: semeval wiki aimed drugbank wikipt");
+		  System.out.println("dataset: semeval wiki aimed wikipt");
 		  System.out.println("generate examples: 	true|false");
 		  System.out.println("signature:  			number of hash signatures");
 		  System.out.println("bands:  				number of hash bands");
@@ -31,9 +31,9 @@ public class Main {
 			TestClassification.bands = Integer.parseInt(args[3]);
 			TestClassification.knn = Integer.parseInt(args[4]);
 			  
-			  System.out.println("signature: " + TestClassification.signature);
-			  System.out.println("bands: " + TestClassification.bands);
-			  System.out.println("knn: " + TestClassification.knn);
+			  System.out.println("Min-Hash Signatures Size " + TestClassification.signature);
+			  System.out.println("Number LSH Bands         " + TestClassification.bands);
+			  System.out.println("k Nearest Neighbours     " + TestClassification.knn);
 			  
 			  String train_file = null;
 			  String test_file = null;
@@ -43,31 +43,30 @@ public class Main {
 				  test_file = args[6];
 			  }
 			  
-			  if (args[0].equalsIgnoreCase("semeval") && args[1].equalsIgnoreCase("false")) TestClassification.testSemEval(train_file,test_file);
+			  if (args[0].equalsIgnoreCase("semeval") && args[1].equalsIgnoreCase("false"))
+				  TestClassification.testSemEval(train_file,test_file);
+
 			  else if (args[0].equalsIgnoreCase("semeval") && args[1].equalsIgnoreCase("true")) {				  
 				  GenerateSetsEN.generateDataSemEval(train_file,test_file);
 				  TestClassification.testSemEval(null,null);
 			  }
 			  
-			  if (args[0].equalsIgnoreCase("aimed") && args[1].equalsIgnoreCase("false")) TestClassification.testAIMED();
+			  if (args[0].equalsIgnoreCase("aimed") && args[1].equalsIgnoreCase("false"))
+			  	TestClassification.testAIMED();
 			  else if (args[0].equalsIgnoreCase("aimed") && args[1].equalsIgnoreCase("true")) {
 				  GenerateSetsEN.generateDataAIMED();
 				  TestClassification.testAIMED();			  		  			  
 			  }
 			  
-			  if (args[0].equalsIgnoreCase("wiki") && args[1].equalsIgnoreCase("false")) TestClassification.testWikiEN();		  
+			  if (args[0].equalsIgnoreCase("wiki") && args[1].equalsIgnoreCase("false"))
+			  	TestClassification.testWikiEN();
 			  else if (args[0].equalsIgnoreCase("wiki") && args[1].equalsIgnoreCase("true")) {
 				  GenerateSetsEN.generateDataWikiEn();
 				  TestClassification.testWikiEN();
 			  }
-			  
-			  if ((args[0].equals("drugbank")) && args[1].equalsIgnoreCase("false")) TestClassification.testDrugBank();
-			  else if (args[0].equals("drugbank") && (args[1].equals("true"))) {
-				  GenerateSetsEN.generateDataDrugBank();
-				  TestClassification.testDrugBank();				  
-			  }
-			  
-			  if (args[0].equals("wikipt") && args[1].equalsIgnoreCase("false")) TestClassification.testWikiPT(args[5],args[6]);
+
+			  if (args[0].equals("wikipt") && args[1].equalsIgnoreCase("false"))
+			  	TestClassification.testWikiPT(args[5],args[6]);
 			  else if (args[0].equals("wikipt") && args[1].equalsIgnoreCase("true")) {				  
 				  GenerateSetsPT.generateWikiPT();
 				  TestClassification.testWikiPT(args[5],args[6]);

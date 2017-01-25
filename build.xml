@@ -4,7 +4,7 @@
     <!-- The value of a property is accessed via ${} -->
     <property name="src.dir" location="src" />
     <property name="build.dir" location="build" />
-    <property name="dist.dir" location="dist" />
+    <property name="dist.dir" location="." />
 
     <path id="lib.path">
         <fileset dir="." includes="libs/*.jar"/>
@@ -13,7 +13,6 @@
     <!-- Deletes the existing build, docs and dist directory-->
     <target name="clean">
         <delete dir="${build.dir}" />
-        <delete dir="${dist.dir}" />
     </target>
 
     <!-- Creates the  build, docs and dist directory-->

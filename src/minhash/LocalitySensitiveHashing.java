@@ -18,8 +18,12 @@ import org.mapdb.DBMaker;
 import utils.misc.Pair;
 import utils.misc.TopN;
 
-/** This class implements a simple Locality Sensitive Hashing (LSH) strategy, relying on min-hash for measuring similarity between instances */
-public class LocalitySentitiveHashing {
+/**
+ * This class implements a simple Locality Sensitive Hashing (LSH) strategy,
+ * relying on min-hash for measuring similarity between instances
+ **/
+
+public class LocalitySensitiveHashing {
 	
  // The hash functions for generating the min-hash signatures
  private MinHash.HashFunction function[];
@@ -30,7 +34,7 @@ public class LocalitySentitiveHashing {
  // The bands from the LSH index (a temporary index that is periodically flushed to non-volatile storage)
  private Map<Integer,Set<Integer>> indexTemp[];
   
- // The min-hash representions for each example in the database
+ // The min-hash representations for each example in the database
  private Map<Integer,int[]> representation;
  
  // The class assigned to each example in the database
@@ -43,22 +47,22 @@ public class LocalitySentitiveHashing {
  private Map<String,Integer> featureWeights;
  
  // A constructor that initializes the LSH index with a given number of hash functions for the min-hash signatures, and with a given number of bands
- public LocalitySentitiveHashing ( int numFunctions , int numBands ) {
+ public LocalitySensitiveHashing(int numFunctions , int numBands ) {
 	 this(createTempFile("locality-sentitive-hashing"),numFunctions,numBands,new HashMap<String,Integer>());
  }
 
  // A constructor that initializes the LSH index with a given number of hash functions for the min-hash signatures, and with a given number of bands
- public LocalitySentitiveHashing ( File file, int numFunctions , int numBands ) {
+ public LocalitySensitiveHashing(File file, int numFunctions , int numBands ) {
 	 this(file,numFunctions,numBands,new HashMap<String,Integer>());
  }
 
  // A constructor that initializes the LSH index with a given number of hash functions for the min-hash signatures, and with a given number of bands
- public LocalitySentitiveHashing ( int numFunctions , int numBands, Map<String,Integer> featureWeights ) {
+ public LocalitySensitiveHashing(int numFunctions , int numBands, Map<String,Integer> featureWeights ) {
 	  this(createTempFile("locality-sentitive-hashing"),numFunctions,numBands,featureWeights);
  }
   
  // A constructor that initializes the LSH index with a given number of hash functions for the min-hash signatures, and with a given number of bands
- public LocalitySentitiveHashing ( File file, int numFunctions , int numBands, Map<String,Integer> featureWeights ) {
+ public LocalitySensitiveHashing(File file, int numFunctions , int numBands, Map<String,Integer> featureWeights ) {
 	 if ( numFunctions % numBands != 0 ) throw new Error("Number of hash functions is not divisible by the number of bands.");
      try {
   	   DB db = DBMaker.newFileDB(file).closeOnJvmShutdown().make();
