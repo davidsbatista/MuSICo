@@ -217,7 +217,7 @@ public class TestClassification {
 		System.out.println("Reading train data WikiEN...");
 		readTrainData("shingles/train-data-wikien.txt");
 		System.out.println("Reading test data WikiEN...");
-		LinkedList<Pair<String, String>> aux = evaluateTestData("test-data-wikien.txt");
+		LinkedList<Pair<String, String>> aux = evaluateTestData("shingles/test-data-wikien.txt");
 		double[] resultsWiki = { 0.0, 0.0, 0.0, 0.0 };
 
 		// All except classes with no test instances
@@ -285,10 +285,10 @@ public class TestClassification {
 		System.out.println("Test classification on WikiPT...");
 		System.out.println("Reading train data WikiPT...");
 		System.out.println(train);
-		if (train == null) train = "train-data-wikipt.txt"; 		
+		if (train == null) train = "shingles/train-data-wikipt.txt";
 		readTrainData(train);
 		System.out.println("Reading test data WikiPT...");		
-		if (test == null) test = "test-data-wikipt.txt";
+		if (test == null) test = "shingles/test-data-wikipt.txt";
 		LinkedList<Pair<String, String>> all_results = evaluateTestData(test);
 		double[] results = { 0.0, 0.0, 0.0, 0.0 };
 		String[] classes_simmetrycal = { "locatedInArea", "origin", "partOf",
@@ -326,5 +326,4 @@ public class TestClassification {
 		System.out.println("F1 : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
 		System.out.println();
 	}
-
 }
