@@ -21,7 +21,7 @@ public class TestClassification {
 	public static int signature = 400;
 	public static int bands = 50;
 	private static boolean separateDirection = false;
-	public static boolean SemEvalAsymmetrical = true;;
+	public static boolean SemEvalAsymmetrical = true;
 
 	private static int trainInstances = 0;
 	private static int testInstances = 0;
@@ -44,11 +44,12 @@ public class TestClassification {
 		lnr.skip(Long.MAX_VALUE);
 		int num_lines = lnr.getLineNumber();
 		BufferedReader input = new BufferedReader(new FileReader(file));
-		String aux = null;
+		String aux;
 		int num = 0;
 		long startTime = System.nanoTime();
 		while ((aux = input.readLine()) != null) {
-			if (num % 1000 == 0) System.out.println(String.valueOf(num) + "/" + String.valueOf(num_lines));
+			if (num % 1000 == 0)
+			    System.out.println(String.valueOf(num) + "/" + String.valueOf(num_lines));
 			HashSet<String> set = new HashSet<String>();
 			for (String element : aux.substring(aux.indexOf(" ") + 1).trim().split(" ")) set.add(element);
 			String cl = aux.substring(0, aux.indexOf(" "));
@@ -151,16 +152,22 @@ public class TestClassification {
 	}
 
 	public static void testSemEval(String train_data, String test_data) throws Exception {
-		System.out.println();
-		System.out.println("Test classification on SemEval...");
+
+		System.out.println("\nTest classification on SemEval...");
+
 		System.out.println("Reading train data SemEval...");
-		if (train_data==null) train_data="shingles/train-data-semeval.txt";
+		if (train_data==null)
+			train_data="shingles/train-data-semeval.txt";
 		readTrainData(train_data);
+
 		System.out.println("Reading test data SemEval...");
-		if (test_data==null) test_data="shingles/test-data-semeval.txt";
+		if (test_data==null)
+			test_data="shingles/test-data-semeval.txt";
 
 		LinkedList<Pair<String, String>> all_results = evaluateTestData(test_data);
+
 		double[] results = { 0.0, 0.0, 0.0, 0.0 };
+
 		String[] classes_asymmetrical = { "Cause-Effect(e1,e2)",
 				"Cause-Effect(e2,e1)", "Component-Whole(e1,e2)",
 				"Component-Whole(e2,e1)", "Content-Container(e1,e2)",
@@ -177,7 +184,7 @@ public class TestClassification {
 				"Instrument-Agency", "Member-Collection", "Message-Topic",
 				"Product-Producer", "Other" };
 
-		String[] classes = null;
+		String[] classes;
 
 		if (SemEvalAsymmetrical)
 			classes = classes_asymmetrical;

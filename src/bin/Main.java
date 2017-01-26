@@ -19,8 +19,8 @@ public class Main {
         if (args.length < 5) {
             System.out.println("MuSICo.jar bin.Main dataset true|false #min-hash-sigs #bands #kNN [train_file] [test_file]");
             System.out.println();
-            System.out.println("dataset           semeval wiki aimed wikipt");
-            System.out.println("true|false        generate shingles ? if false need to pass train_file/test_file");
+            System.out.println("dataset           semeval|wiki|aimed|wikipt");
+            System.out.println("true|false        generate shingles?");
             System.out.println("#min-hash-sigs    number of hash signatures");
             System.out.println("#bands            size of the LSH bands");
             System.out.println("#kNN              number of closest neighbors to consider");

@@ -34,20 +34,15 @@ public class GenerateSetsEN {
         long elapsedTime = 0;
 
         while ( ( aux = input.readLine() ) != null ) {
-
             if ( aux.contains("\t\"") ) {
-
                 sentence = aux.substring(aux.indexOf("\"")+1,aux.lastIndexOf("\""));
-
                 String before = sentence.substring(0,Math.min(sentence.indexOf("</e1>"),sentence.indexOf("</e2>"))).trim();
                 String after = sentence.substring(Math.max(sentence.indexOf("<e2>")+4,sentence.indexOf("<e1>")+4)).trim();
                 String between = sentence.substring(Math.min(sentence.indexOf("</e1>")+5,sentence.indexOf("</e2>")+5),
                         Math.max(sentence.indexOf("<e2>"),sentence.indexOf("<e1>"))).trim();
-
                 between = between.replaceAll("</?e[12] *>","");
                 before = before.replaceAll("</?e[12] *>","") + " " + between;
                 after = between + " " + after.replaceAll("</?e[12] *>","");
-
                 type = input.readLine().trim();
 
                 if (!TestClassification.SemEvalAsymmetrical)
@@ -56,6 +51,7 @@ public class GenerateSetsEN {
                 long startTime = System.nanoTime();
                 processExample(before,after,between,type,out);
                 long stopTime = System.nanoTime();
+
                 elapsedTime += stopTime - startTime;
             }
         }
@@ -382,20 +378,21 @@ public class GenerateSetsEN {
     }
 
     public static void generateDataSemEval(String train, String test) throws Exception {
-        System.out.println("Generating SemEval Train Data...");
+
         long elapsedTimeTrain;
         long elapsedTimeTest;
 
+        System.out.print("Generating SemEval Train Data... ");
         if (train == null)
             train = "datasets/SemEval2010_task8_all_data/SemEval2010_task8_training/TRAIN_FILE.TXT";
-
         elapsedTimeTrain = processSemEval(train, new PrintWriter(new FileWriter("shingles/train-data-semeval.txt")));
-        System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTrain, TimeUnit.NANOSECONDS));
-        System.out.println("Generating SemEval Test Data...");
+        System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTrain, TimeUnit.NANOSECONDS) + " seconds");
 
-        if (test == null) test = "datasets/SemEval2010_task8_all_data/SemEval2010_task8_testing_keys/TEST_FILE_FULL.TXT";
-            elapsedTimeTest = processSemEval(test, new PrintWriter(new FileWriter("shingles/test-data-semeval.txt")));
-            System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTest, TimeUnit.NANOSECONDS));
+        System.out.print("Generating SemEval Test Data... ");
+        if (test == null)
+            test = "datasets/SemEval2010_task8_all_data/SemEval2010_task8_testing_keys/TEST_FILE_FULL.TXT";
+        elapsedTimeTest = processSemEval(test, new PrintWriter(new FileWriter("shingles/test-data-semeval.txt")));
+        System.out.println(TimeUnit.SECONDS.convert(elapsedTimeTest, TimeUnit.NANOSECONDS) + " seconds");
     }
 
     public static void generateDataWikiEn() throws Exception {
@@ -419,43 +416,52 @@ public class GenerateSetsEN {
     String normalized[] = EnglishNLP.adornText(source,3).split(" +");
     String aux[] = EnglishNLP.adornText(source,0).split(" +");
     List<String> set = new ArrayList<String>();
+
     for ( int i = 0 ; i < aux.length; i++ ) {
-    if ( prefix.startsWith("BEF") && aux.length - i > betweenLenght + window ) continue;
-    if ( prefix.startsWith("AFT") && i > betweenLenght + window ) continue;
-    source = (i == 0) ? aux[i] : source + " " + aux[i];
-    if ( auxPOS.length == normalized.length && auxPOS.length == aux.length ) {
-        if ( auxPOS[i].startsWith("v") ) {
-          set.add(normalized[i] + "_" + ( i < aux.length - 1 ? normalized[i+1] + "_" : "" ) + prefix);
-          if ( !normalized[i].equals("be") && !normalized[i].equals("have") && auxPOS[i].equals("vvn") ) set.add(normalized[i] + "_VVN_" + prefix);
-          if ( !normalized[i].equals("be") && !normalized[i].equals("have") ) set.add(normalized[i] + "_" + prefix);
+        if ( prefix.startsWith("BEF") && aux.length - i > betweenLenght + window )
+            continue;
+        if ( prefix.startsWith("AFT") && i > betweenLenght + window )
+            continue;
+
+        source = (i == 0) ? aux[i] : source + " " + aux[i];
+        if ( auxPOS.length == normalized.length && auxPOS.length == aux.length ) {
+            if ( auxPOS[i].startsWith("v") ) {
+                set.add(normalized[i] + "_" + ( i < aux.length - 1 ? normalized[i+1] + "_" : "" ) + prefix);
+                if ( !normalized[i].equals("be") && !normalized[i].equals("have") && auxPOS[i].equals("vvn") )
+                    set.add(normalized[i] + "_VVN_" + prefix);
+                if ( !normalized[i].equals("be") && !normalized[i].equals("have") )
+                    set.add(normalized[i] + "_" + prefix);
+
+                //passive voice detection
+                if (i < aux.length - 4) {
+                    if ((normalized[i].equals("have") && normalized[i+1].equals("be") && auxPOS[i+2].equals("vvn") && (auxPOS[i+3].startsWith("pp") || auxPOS[i+3].equals("p-acp") || auxPOS[i+3].startsWith("pf") || auxPOS[i+3].startsWith("pc-acp") || auxPOS[i+3].startsWith("acp")))) {
+                        set.add(normalized[i] + "_" + normalized[i+1] + "_" + normalized[i+2] +  "_" + normalized[i+3] + "_PASSIVE" + prefix);
+                        set.add("_PASSIVE_" + prefix);
+                    }
+                }
+
+                if (i < aux.length - 3) {
+                    if ( i > 0 && (normalized[i-1].equals("have") || normalized[i-1].equals("be")))
+                        continue;
+                    if (((normalized[i].equals("have") || normalized[i].equals("be")) && auxPOS[i+1].equals("vvn") && (auxPOS[i+2].startsWith("pp") || auxPOS[i+2].equals("p-acp") || auxPOS[i+2].startsWith("pf") || auxPOS[i+2].startsWith("pc-acp") || auxPOS[i+2].startsWith("acp")))) {
+                        set.add(normalized[i] + "_" + normalized[i+1] + "_" + normalized[i+2] + "_PASSIVE" + prefix);
+                        set.add("_PASSIVE_" + prefix);
+                    }
+                }
 
 
-          //passive voice detection
-          if (i < aux.length - 4) {
-              if ((normalized[i].equals("have") && normalized[i+1].equals("be") && auxPOS[i+2].equals("vvn") && (auxPOS[i+3].startsWith("pp") || auxPOS[i+3].equals("p-acp") || auxPOS[i+3].startsWith("pf") || auxPOS[i+3].startsWith("pc-acp") || auxPOS[i+3].startsWith("acp")))) {
-                  set.add(normalized[i] + "_" + normalized[i+1] + "_" + normalized[i+2] +  "_" + normalized[i+3] + "_PASSIVE" + prefix);
-                  set.add("_PASSIVE_" + prefix);
-              }
-          }
-          if (i < aux.length - 3) {
-              if ( i > 0 && (normalized[i-1].equals("have") || normalized[i-1].equals("be"))) continue;
-              if (((normalized[i].equals("have") || normalized[i].equals("be")) && auxPOS[i+1].equals("vvn") && (auxPOS[i+2].startsWith("pp") || auxPOS[i+2].equals("p-acp") || auxPOS[i+2].startsWith("pf") || auxPOS[i+2].startsWith("pc-acp") || auxPOS[i+2].startsWith("acp")))) {
-                  set.add(normalized[i] + "_" + normalized[i+1] + "_" + normalized[i+2] + "_PASSIVE" + prefix);
-                  set.add("_PASSIVE_" + prefix);
-              }
-          }
+                //ReVerb inspired pattern: a verb, followed by:  nouns, adjectives or adverbs, ending in a proposition
+                if (i < aux.length - 2) {
+                    String pattern = normalized[i];
+                    int j = i + 1;
+                    if ( j < aux.length && auxPOS[j].startsWith("pc-acp") || auxPOS[j].startsWith("acp")) {
+                        pattern += "_" + normalized[j++];
 
-          //ReVerb inspired pattern: a verb, followed by:  nouns, adjectives or adverbs, ending in a proposition
-          if (i < aux.length - 2) {
-            String pattern = normalized[i];
-            int j = i + 1;
-            if ( j < aux.length && auxPOS[j].startsWith("pc-acp") || auxPOS[j].startsWith("acp")) {
-                pattern += "_" + normalized[j++];
-            }
-            if ( j < aux.length && auxPOS[j].startsWith("av")) {
-                pattern += "_" + normalized[j++];
-            }
-            while ( (j < aux.length - 2) && (auxPOS[j].startsWith("av") || // adverbs
+                    }
+                    if ( j < aux.length && auxPOS[j].startsWith("av")) {
+                        pattern += "_" + normalized[j++];
+                    }
+                    while ( (j < aux.length - 2) && (auxPOS[j].startsWith("av") || // adverbs
                                              auxPOS[j].equals("d") || auxPOS[j].startsWith("av-d") || auxPOS[j].equals("dc")|| auxPOS[j].equals("dg") || auxPOS[j].equals("ds") || auxPOS[j].equals("dx") || auxPOS[j].equals("n2-dx") || //determiners
                                              auxPOS[j].startsWith("j") || //adjectives
                                              (auxPOS[j].startsWith("n") && !auxPOS[j].startsWith("nu")) || //nouns
@@ -503,10 +509,10 @@ public class GenerateSetsEN {
     public static void processExample ( String before, String after, String between, String type, PrintWriter out ) {
         out.print(type);
 
-        if ( before.lastIndexOf(",") != -1 && before.lastIndexOf(",") < before.lastIndexOf(between) )
+        if (before.lastIndexOf(",") != -1 && before.lastIndexOf(",") < before.lastIndexOf(between))
             before = before.substring(before.lastIndexOf(",") + 1);
 
-        if ( after.indexOf(",") != -1 && after.indexOf(",") > between.length())
+        if (after.indexOf(",") != -1 && after.indexOf(",") > between.length())
             after = after.substring(0,after.lastIndexOf(","));
 
         int betweenLength = EnglishNLP.adornText(between,0).split(" +").length;
