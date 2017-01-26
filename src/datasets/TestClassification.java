@@ -71,8 +71,7 @@ public class TestClassification {
 		input.close();
 	}
 
-	public static LinkedList<Pair<String, String>> evaluateTestData(String file)
-			throws Exception {
+	public static LinkedList<Pair<String, String>> evaluateTestData(String file) throws Exception {
 		return evaluateTestData(file, -1);
 	}
 
