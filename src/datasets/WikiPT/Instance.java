@@ -14,8 +14,4 @@ public class Instance {
 		this.after = after;
 		this.between = between;
 	}
-	
-	
-	
-	
 }

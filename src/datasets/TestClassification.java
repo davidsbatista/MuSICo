@@ -107,8 +107,8 @@ public class TestClassification {
 		double numClassified = 0;
 		double numCorrect = 0;
 
-		// pair.getFirst() = true label
-		// pair.getSecond() = classification label
+		// pair.getFirst() has the true label
+		// pair.getSecond() has the predicted label
 
 		for (Pair<String, String> pair : results) {
 			if (pair.getSecond() == null)

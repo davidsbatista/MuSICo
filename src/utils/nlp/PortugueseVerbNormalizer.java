@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class PortugueseVerbNormalizer {
 	
-	static String file = "/home/dsbatista/relations-minhash/resources/Label-Delaf_pt_v4_1.dic.utf8";	
+	static String file = "resources/Label-Delaf_pt_v4_1.dic.utf8";
 	public static HashMap<String, String> verbs = null; 
 	
 	public static void initialize(){		

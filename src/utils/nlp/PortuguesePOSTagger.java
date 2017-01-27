@@ -46,20 +46,7 @@ public class PortuguesePOSTagger {
         token = new TokenizerME(tModel);
         sent = new SentenceDetectorME(sModel);
 	}
-	
-	public static void main(String[] args) throws InvalidFormatException, FileNotFoundException, IOException {
-		initialize();		
-		/*
-		String[] tags = posTags("A decisão foi anunciada por Jeroen Dijsselbloem, ministro da finanças da Holanda que preside às reuniões do Eurogrupo e refere-se aos 26 mil milhões de euros dos empréstimos do Fundo Europeu de Estabilidade Financeira (FEEF) garantidos pelos países do euro");
-		System.out.println("A decisão foi anunciada por Jeroen Dijsselbloem, ministro da finanças da Holanda que preside às reuniões do Eurogrupo e refere-se aos 26 mil milhões de euros dos empréstimos do Fundo Europeu de Estabilidade Financeira (FEEF) garantidos pelos países do euro");
-		for (int i = 0; i < tags.length; i++) {
-			System.out.print(tags[i] + '\t');
-		}
-		*/
-		String s = "Vídeo: Números do PIB \"são muito negativos\"";
-		tag(s);
-	}
-	
+
 	public static List<String> tag(String text) {
 		
 		List<String> tagged_sentences = new LinkedList<String>();		
@@ -80,8 +67,6 @@ public class PortuguesePOSTagger {
 		}		
 		return tagged_sentences;
 	}
-	
-	
 	
 	public static String[] tokenize(String text){
 		String whitespaceTokenizerLine[] = token.tokenize(text);
