@@ -26,9 +26,9 @@ public class PortuguesePOSTagger {
 	static POSTaggerME tagger = null; 
 	static TokenizerME token = null;
 	static SentenceDetector sent = null;
-	static String RESOURCES = "/home/dsbatista/relations-minhash/resources/";
+	static String RESOURCES = "resources/";
 	
-	public static void initialize() throws InvalidFormatException, FileNotFoundException, IOException {
+	public static void initialize() throws IOException {
 		
 		/* normal model */
 		/*

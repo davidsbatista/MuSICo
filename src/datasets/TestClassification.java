@@ -1,13 +1,9 @@
 package datasets;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.LineNumberReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
@@ -20,12 +16,10 @@ public class TestClassification {
 	public static int knn = 5;
 	public static int signature = 400;
 	public static int bands = 50;
-	private static boolean separateDirection = false;
 	public static boolean SemEvalAsymmetrical = true;
-
+	private static boolean separateDirection = false;
 	private static int trainInstances = 0;
 	private static int testInstances = 0;
-
 	private static LocalitySensitiveHashing dataIndex;
 	private static LocalitySensitiveHashing directionIndex;
 	
@@ -135,12 +129,12 @@ public class TestClassification {
 
 		System.out.println();
 		System.out.println("Results for class \t" + class_relation + "\t" + (dataIndex.indexSize(class_relation) + (int) numInstancesOfClass));
-		System.out.println("Number of training instances: " + dataIndex.indexSize(class_relation));
-		System.out.println("Number of test instances: " + numInstancesOfClass);
-		System.out.println("Number of classifications: " + numClassified);
-		System.out.println("Precision: " + precision);
-		System.out.println("Recall: " + recall);
-		System.out.println("F1: " + f1);
+		System.out.println("Number of training instances : " + dataIndex.indexSize(class_relation));
+		System.out.println("Number of test instances     : " + numInstancesOfClass);
+		System.out.println("Number of classifications    : " + numClassified);
+		System.out.println("Precision : " + precision);
+		System.out.println("Recall    : " + recall);
+		System.out.println("F1        : " + f1);
 
 		trainInstances += dataIndex.indexSize(class_relation);
 		testInstances += numInstancesOfClass;
@@ -262,21 +256,23 @@ public class TestClassification {
 			System.out.println("Reading train data ...");
 			readTrainData("shingles/train-data-aimed.txt." + i);
 			System.out.println("Reading test data ...");
-			LinkedList<Pair<String, String>> aux = evaluateTestData("test-data-aimed.txt." + i);
+			LinkedList<Pair<String, String>> aux = evaluateTestData("shingles/test-data-aimed.txt." + i);
 			double[] results_aux = evaluateResults(aux, "related");
-			System.out.println("Accuracy : " + results_aux[0]);
+			System.out.println("Accuracy  : " + results_aux[0]);
 			for (int j = 0; j < results_aux.length; j++) {
 				results[j] = results[j] + results_aux[j];
 			}
 		}
+
 		for (int j = 0; j < results.length; j++)
 			results[j] = results[j] / 10;
+
 		System.out.println();
-		System.out.println("Results for cross validation...");
-		System.out.println("Accuracy : " + results[0]);
+		System.out.println("Avg. results for 10 fold cross validation");
+		System.out.println("Accuracy  : " + results[0]);
 		System.out.println("Precision : " + results[1]);
-		System.out.println("Recall : " + results[2]);
-		System.out.println("F1 : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
+		System.out.println("Recall 	  : " + results[2]);
+		System.out.println("F1 		  : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
 	}
 
 	public static void testWikiPT(String train, String test) throws Exception {
