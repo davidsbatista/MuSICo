@@ -275,17 +275,15 @@ public class TestClassification {
 		System.out.println("F1 		  : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
 	}
 
-	public static void testWikiPT(String train, String test) throws Exception {
+	public static void testWikiPT() throws Exception {
 		System.out.println();
 		System.out.println("Test classification on WikiPT...");
 		System.out.println("Reading train data WikiPT...");
-		System.out.println(train);
-		if (train == null) train = "shingles/train-data-wikipt.txt";
-		readTrainData(train);
-		System.out.println("Reading test data WikiPT...");		
-		if (test == null) test = "shingles/test-data-wikipt.txt";
-		LinkedList<Pair<String, String>> all_results = evaluateTestData(test);
+		readTrainData("shingles/train-data-wikipt.txt");
+		System.out.println("Reading test data WikiPT...");
+		LinkedList<Pair<String, String>> all_results = evaluateTestData("shingles/test-data-wikipt.txt");
 		double[] results = { 0.0, 0.0, 0.0, 0.0 };
+
 		String[] classes_simmetrycal = { "locatedInArea", "origin", "partOf",
 				"deathOrBurialPlace", "successor", "keyPerson", "parent",
 				"influencedBy", "partner", "other" };
@@ -313,12 +311,12 @@ public class TestClassification {
 
 		System.out.println();
 		System.out.println("Total train instances : " + trainInstances);
-		System.out.println("Total test instances : " + testInstances);
+		System.out.println("Total test instances  : " + testInstances);
 		System.out.println("Macro-Average results for all classes...");
-		System.out.println("Accuracy : " + results[0]);
+		System.out.println("Accuracy  : " + results[0]);
 		System.out.println("Precision : " + results[1]);
-		System.out.println("Recall : " + results[2]);
-		System.out.println("F1 : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
+		System.out.println("Recall    : " + results[2]);
+		System.out.println("F1        : " + (2.0 * ((results[1] * results[2]) / (results[1] + results[2]))));
 		System.out.println();
 	}
 }

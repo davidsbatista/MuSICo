@@ -144,5 +144,4 @@ public class EnglishNLP {
         }
         adornedWord.setLemmata( lemmata );
     }
-
 }

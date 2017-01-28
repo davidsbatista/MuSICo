@@ -40,34 +40,33 @@ public class Main {
             }
 
             if (args[0].equalsIgnoreCase("semeval") && args[1].equalsIgnoreCase("false"))
-              TestClassification.testSemEval(train_file,test_file);
+                TestClassification.testSemEval(train_file,test_file);
 
             else if (args[0].equalsIgnoreCase("semeval") && args[1].equalsIgnoreCase("true")) {
-              GenerateSetsEN.generateDataSemEval(train_file,test_file);
-              TestClassification.testSemEval(null,null);
+                GenerateSetsEN.generateDataSemEval(train_file,test_file);
+                TestClassification.testSemEval(null,null);
             }
 
             if (args[0].equalsIgnoreCase("aimed") && args[1].equalsIgnoreCase("false"))
             	TestClassification.testAIMED();
             else if (args[0].equalsIgnoreCase("aimed") && args[1].equalsIgnoreCase("true")) {
-              GenerateSetsEN.generateDataAIMED();
-              TestClassification.testAIMED();
+                GenerateSetsEN.generateDataAIMED();
+                TestClassification.testAIMED();
             }
 
             if (args[0].equalsIgnoreCase("wiki") && args[1].equalsIgnoreCase("false"))
             	TestClassification.testWikiEN();
             else if (args[0].equalsIgnoreCase("wiki") && args[1].equalsIgnoreCase("true")) {
-              GenerateSetsEN.generateDataWikiEn();
-              TestClassification.testWikiEN();
+                GenerateSetsEN.generateDataWikiEn();
+                TestClassification.testWikiEN();
             }
 
             if (args[0].equals("wikipt") && args[1].equalsIgnoreCase("false"))
-            	TestClassification.testWikiPT(args[5],args[6]);
+                TestClassification.testWikiPT();
             else if (args[0].equals("wikipt") && args[1].equalsIgnoreCase("true")) {
-              GenerateSetsPT.generateWikiPT();
-              TestClassification.testWikiPT(args[5],args[6]);
+                GenerateSetsPT.generateWikiPT();
+                TestClassification.testWikiPT();
             }
 		}
-		System.exit(0);
 	}
 }
