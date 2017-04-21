@@ -34,8 +34,8 @@ All the external libs needed by MuSICo are in the `libs/` directory. Then you ca
 
 References
 ==========
-David S. Batista, Rui Silva, Bruno Martins, Mário J. Silva , [A Minwise Hashing Method for Addressing Relationship Extraction from Text](http://davidsbatista.github.io/publications/minwise-wise_13.pdf) in Web Information Systems Engineering (WISE), 2013
+David S. Batista, Rui Silva, Bruno Martins, Mário J. Silva, [A Minwise Hashing Method for Addressing Relationship Extraction from Text](http://davidsbatista.net/assets/documents/publications/minwise-wise_13.pdf) in Web Information Systems Engineering (WISE), 2013
 
-David Soares Batista, David Forte, Rui Silva, Bruno Martins, Mário Silva , [Exploring DBpedia and Wikipedia for Portuguese Semantic Relationship Extraction](http://davidsbatista.github.io/publications/minwise-linguamtica-13.pdf) in  Linguamática, 5(1), 2013.
+David Soares Batista, David Forte, Rui Silva, Bruno Martins, Mário Silva, [Exploring DBpedia and Wikipedia for Portuguese Semantic Relationship Extraction](http://davidsbatista.net/assets/documents/publications/minwise-linguamtica-13.pdf) in  Linguamática, 5(1), 2013.
 
-David S. Batista, Ph.D. Thesis, [Large-Scale Semantic Relationship Extraction for Information Discovery (Chapter 4)] (http://davidsbatista.github.io/publications/dsbatista-phd-thesis-2016.pdf), Instituto Superior Técnico, University of Lisbon, 2016
+David S. Batista, Ph.D. Thesis, [Large-Scale Semantic Relationship Extraction for Information Discovery (Chapter 4)](http://davidsbatista.net/assets/documents/publications/dsbatista-phd-thesis-2016.pdf), Instituto Superior Técnico, University of Lisbon, 2016
